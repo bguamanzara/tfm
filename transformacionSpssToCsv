@@ -1,0 +1,23 @@
+library(foreign)
+
+divorcios2020 = read.spss("D:\\tfm\\EDV_2020.sav", to.data.frame=TRUE)
+divorcios2019 = read.spss("D:\\tfm\\\\EDV_2019.sav", to.data.frame=TRUE)
+divorcios2018 = read.spss("D:\\tfm\\\\EDV 2018.sav", to.data.frame=TRUE)
+
+write.csv(divorcios2020, "D:\\tfm\\tfm_divorcios2020.csv", sep=";", row.names = FALSE)
+write.csv(divorcios2019, "D:\\tfm\\tfm_divorcios2019.csv", sep=";", row.names = FALSE)
+write.csv(divorcios2018, "D:\\tfm\\tfm_divorcios2018.csv", sep=";", row.names = FALSE)
+
+enemdu2020 = read.spss("D:\\tfm\\enemdu_persona_2020.sav", to.data.frame=TRUE)
+enemdu2019 = read.spss("D:\\tfm\\enemdu_persona_2019.sav", to.data.frame=TRUE)
+enemdu2018 = read.spss("D:\\tfm\\enemdu_persona_2018.sav", to.data.frame=TRUE)
+
+write.csv(enemdu2020, "D:\\tfm\\tfm_enemdu2020.csv", sep=";", row.names = FALSE)
+write.csv(enemdu2019, "D:\\tfm\\tfm_enemdu2019.csv", sep=";", row.names = FALSE)
+write.csv(enemdu2018, "D:\\tfm\\tfm_enemdu2018.csv", sep=";", row.names = FALSE)
+
+unique(enemdu2018$p05a)
+unique(enemdu2018$condact)
+unique(enemdu2018$nnivins)
+unique(enemdu2018$p42)
+unique(enemdu2018$ciudad)
