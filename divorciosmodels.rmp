@@ -15,7 +15,7 @@
       <operator activated="true" class="read_csv" compatibility="9.10.001" expanded="true" height="68" name="2018" width="90" x="45" y="34">
         <parameter key="csv_file" value="D:\tfm\tfm_enemdu2018.csv"/>
         <parameter key="column_separators" value=";"/>
-        <parameter key="trim_lines" value="false"/>
+        <parameter key="trim_lines" value="true"/>
         <parameter key="use_quotes" value="true"/>
         <parameter key="quotes_character" value="&quot;"/>
         <parameter key="escape_character" value="\"/>
@@ -67,12 +67,12 @@
           <parameter key="29" value="p17a.true.polynominal.attribute"/>
           <parameter key="30" value="p17b.true.polynominal.attribute"/>
           <parameter key="31" value="p18.true.polynominal.attribute"/>
-          <parameter key="32" value="cod_inf.true.polynominal.attribute"/>
+          <parameter key="32" value="cod_inf.true.integer.attribute"/>
           <parameter key="33" value="p20.true.polynominal.attribute"/>
           <parameter key="34" value="p21.true.polynominal.attribute"/>
           <parameter key="35" value="p22.true.polynominal.attribute"/>
           <parameter key="36" value="p23.true.polynominal.attribute"/>
-          <parameter key="37" value="p24.true.polynominal.attribute"/>
+          <parameter key="37" value="p24.true.integer.attribute"/>
           <parameter key="38" value="p25.true.polynominal.attribute"/>
           <parameter key="39" value="p26.true.polynominal.attribute"/>
           <parameter key="40" value="p27.true.polynominal.attribute"/>
@@ -88,8 +88,8 @@
           <parameter key="50" value="p37.true.polynominal.attribute"/>
           <parameter key="51" value="p38.true.polynominal.attribute"/>
           <parameter key="52" value="p39.true.polynominal.attribute"/>
-          <parameter key="53" value="p40.true.polynominal.attribute"/>
-          <parameter key="54" value="p41.true.polynominal.attribute"/>
+          <parameter key="53" value="p40.true.integer.attribute"/>
+          <parameter key="54" value="p41.true.integer.attribute"/>
           <parameter key="55" value="p42.true.polynominal.attribute"/>
           <parameter key="56" value="p42a.true.polynominal.attribute"/>
           <parameter key="57" value="p43.true.polynominal.attribute"/>
@@ -104,14 +104,14 @@
           <parameter key="66" value="p44i.true.polynominal.attribute"/>
           <parameter key="67" value="p44j.true.polynominal.attribute"/>
           <parameter key="68" value="p44k.true.polynominal.attribute"/>
-          <parameter key="69" value="p45.true.polynominal.attribute"/>
+          <parameter key="69" value="p45.true.integer.attribute"/>
           <parameter key="70" value="p46.true.polynominal.attribute"/>
           <parameter key="71" value="p47a.true.polynominal.attribute"/>
           <parameter key="72" value="p47b.true.polynominal.attribute"/>
           <parameter key="73" value="p48.true.polynominal.attribute"/>
           <parameter key="74" value="p49.true.polynominal.attribute"/>
           <parameter key="75" value="p50.true.polynominal.attribute"/>
-          <parameter key="76" value="p51a.true.polynominal.attribute"/>
+          <parameter key="76" value="p51a.true.integer.attribute"/>
           <parameter key="77" value="p51b.true.polynominal.attribute"/>
           <parameter key="78" value="p51c.true.polynominal.attribute"/>
           <parameter key="79" value="p52.true.polynominal.attribute"/>
@@ -180,8 +180,8 @@
           <parameter key="142" value="empleo.true.polynominal.attribute"/>
           <parameter key="143" value="desempleo.true.polynominal.attribute"/>
           <parameter key="144" value="secemp.true.polynominal.attribute"/>
-          <parameter key="145" value="ingrl.true.polynominal.attribute"/>
-          <parameter key="146" value="ingpc.true.real.attribute"/>
+          <parameter key="145" value="ingrl.true.integer.attribute"/>
+          <parameter key="146" value="ingpc.true.polynominal.attribute"/>
           <parameter key="147" value="pobreza.true.polynominal.attribute"/>
           <parameter key="148" value="epobreza.true.polynominal.attribute"/>
           <parameter key="149" value="estrato.true.integer.attribute"/>
@@ -246,24 +246,28 @@
           <parameter key="p06" value="estado_civil"/>
           <parameter key="p10a" value="nivel_instruccion"/>
           <parameter key="p12b" value="titulo"/>
-          <parameter key="p15" value="comoSeConsidera"/>
+          <parameter key="p15" value="etnia"/>
           <parameter key="p42" value="ocupacion"/>
           <parameter key="p45" value="anios_trabajo"/>
           <parameter key="p50" value="numero_trabajos"/>
+          <parameter key="ciudad" value="codigo_postal"/>
         </list>
         <parameter key="from_attribute" value=""/>
         <parameter key="to_attribute" value=""/>
       </operator>
       <operator activated="true" class="generate_attributes" compatibility="9.10.001" expanded="true" height="82" name="Generate Attributes" width="90" x="715" y="34">
         <list key="function_descriptions">
-          <parameter key="clasificacion" value="if((edad&gt;=15 &amp;&amp; edad&lt;=21), &quot;15-21&quot;, &#10;  if ((edad &gt;21 &amp;&amp; edad &lt;= 30), &quot;22-30&quot;, &#10;     if((edad &gt; 30 &amp;&amp; edad &lt;= 45), &quot;31-45&quot;, &#10;        if (edad&gt; 45, &quot;&gt;45&quot;, &quot;NA&quot;))))"/>
-          <parameter key="ingresos" value="if(ingresos==&quot;NA&quot;, 0, ingresos)"/>
+          <parameter key="edad" value="if((edad&gt;=15 &amp;&amp; edad&lt;=21), &quot;15-21&quot;, &#10;  if ((edad &gt;21 &amp;&amp; edad &lt;= 30), &quot;22-30&quot;, &#10;     if((edad &gt; 30 &amp;&amp; edad &lt;= 45), &quot;31-45&quot;, &#10;        if (edad&gt; 45, &quot;&gt;45&quot;, &quot;NA&quot;))))"/>
+          <parameter key="ingresos" value="if((ingresos &lt;= 300), &quot;&lt;=300.00&quot;, &#10;  if ((ingresos &gt; 300 &amp;&amp; ingresos &lt;= 600), &quot;300.01-600.00&quot;, &#10;     if((ingresos &gt; 600.01 &amp;&amp; ingresos &lt;= 1000.00), &quot;600.01-1000.00&quot;, &#10;        if((ingresos &gt; 1000.01 &amp;&amp; ingresos &lt;= 1500.00), &quot;1000.01-1500.00&quot;,&#10;           if((ingresos &gt; 1500.01 &amp;&amp; ingresos &lt;= 2000.00), &quot;1500.01-2000.00&quot;,&#10;              if((ingresos &gt; 2000.01 &amp;&amp; ingresos &lt;= 3000.00), &quot;2000.01-3000.00&quot;,&#10;                 if (ingresos &gt; 3000, &quot;&gt; 3000&quot;, &quot;NA&quot;)))))))"/>
           <parameter key="ocupacion" value="if(ocupacion==&quot;NA&quot;, &quot;Ninguna&quot;, ocupacion)"/>
-          <parameter key="anios_trabajo" value="if(anios_trabajo==&quot;NA&quot;, 0, anios_trabajo)"/>
+          <parameter key="anios_trabajo" value="if((anios_trabajo &gt;=0 &amp;&amp; anios_trabajo &lt;= 5), &quot;&lt;=5&quot;, &#10;  if ((anios_trabajo &gt; 6 &amp;&amp; anios_trabajo &lt;= 10), &quot;6-10&quot;, &#10;     if((anios_trabajo &gt; 11 &amp;&amp; anios_trabajo &lt;= 20), &quot;11-20&quot;, &#10;        if((anios_trabajo &gt; 21 &amp;&amp; anios_trabajo &lt;= 30), &quot;21-30&quot;,&#10;           if((anios_trabajo &gt; 31 &amp;&amp; anios_trabajo &lt;= 40), &quot;31-40&quot;,&#10;              if((anios_trabajo &gt; 41 &amp;&amp; anios_trabajo &lt;= 50), &quot;41-50&quot;,&#10;                 if (anios_trabajo &gt; 50, &quot;&gt; 50&quot;, &quot;NA&quot;)))))))"/>
           <parameter key="numero_trabajos" value="if(numero_trabajos==&quot;NA&quot;, &quot;Ninguno&quot;, numero_trabajos)"/>
           <parameter key="titulo" value="if(titulo==&quot;NA&quot;, &quot;No tiene&quot;, titulo)"/>
           <parameter key="estado_civil" value="if(estado_civil==&quot;Separado(a)&quot;, &quot;Divorciado(a)&quot;, estado_civil)"/>
           <parameter key="seguro_social" value="if(contains(seguro_social, &quot;IESS&quot;), &quot;IESS&quot;,seguro_social)"/>
+          <parameter key="anio" value="2018"/>
+          <parameter key="area" value="if(area==&quot;Urbano&quot;, &quot;Urbana&quot;, area)"/>
+          <parameter key="etnia" value="if(contains(etnia, &quot;Otro&quot;), &quot;Otra&quot;, etnia)"/>
         </list>
         <parameter key="keep_all" value="true"/>
       </operator>
@@ -273,7 +277,7 @@
         <parameter key="invert_filter" value="true"/>
         <list key="filters_list">
           <parameter key="filters_entry_key" value="estado_civil.equals.NA"/>
-          <parameter key="filters_entry_key" value="clasificacion.contains.NA"/>
+          <parameter key="filters_entry_key" value="edad.contains.NA"/>
         </list>
         <parameter key="filters_logic_and" value="true"/>
         <parameter key="filters_check_metadata" value="true"/>
@@ -281,7 +285,7 @@
       <operator activated="true" class="read_csv" compatibility="9.10.001" expanded="true" height="68" name="2019" width="90" x="45" y="187">
         <parameter key="csv_file" value="D:\tfm\tfm_enemdu2019.csv"/>
         <parameter key="column_separators" value=";"/>
-        <parameter key="trim_lines" value="false"/>
+        <parameter key="trim_lines" value="true"/>
         <parameter key="use_quotes" value="true"/>
         <parameter key="quotes_character" value="&quot;"/>
         <parameter key="escape_character" value="\"/>
@@ -368,7 +372,7 @@
           <parameter key="64" value="p44i.true.polynominal.attribute"/>
           <parameter key="65" value="p44j.true.polynominal.attribute"/>
           <parameter key="66" value="p44k.true.polynominal.attribute"/>
-          <parameter key="67" value="p45.true.polynominal.attribute"/>
+          <parameter key="67" value="p45.true.integer.attribute"/>
           <parameter key="68" value="p46.true.polynominal.attribute"/>
           <parameter key="69" value="p47a.true.polynominal.attribute"/>
           <parameter key="70" value="p47b.true.polynominal.attribute"/>
@@ -437,7 +441,7 @@
           <parameter key="133" value="sd0211.true.polynominal.attribute"/>
           <parameter key="134" value="sd03.true.polynominal.attribute"/>
           <parameter key="135" value="ced01a.true.polynominal.attribute"/>
-          <parameter key="136" value="ingrl.true.polynominal.attribute"/>
+          <parameter key="136" value="ingrl.true.integer.attribute"/>
           <parameter key="137" value="fexp.true.real.attribute"/>
           <parameter key="138" value="condact.true.polynominal.attribute"/>
           <parameter key="139" value="secemp.true.polynominal.attribute"/>
@@ -510,10 +514,11 @@
           <parameter key="p06" value="estado_civil"/>
           <parameter key="p10a" value="nivel_instruccion"/>
           <parameter key="p12b" value="titulo"/>
-          <parameter key="p15" value="comoSeConsidera"/>
+          <parameter key="p15" value="etnia"/>
           <parameter key="p42" value="ocupacion"/>
           <parameter key="p45" value="anios_trabajo"/>
           <parameter key="p50" value="numero_trabajos"/>
+          <parameter key="ciudad" value="codigo_postal"/>
         </list>
         <parameter key="from_attribute" value=""/>
         <parameter key="to_attribute" value=""/>
@@ -574,14 +579,17 @@
       </operator>
       <operator activated="true" class="generate_attributes" compatibility="9.10.001" expanded="true" height="82" name="Generate Attributes (2)" width="90" x="715" y="187">
         <list key="function_descriptions">
-          <parameter key="clasificacion" value="if((edad&gt;=15 &amp;&amp; edad&lt;=21), &quot;15-21&quot;, &#10;  if ((edad &gt;21 &amp;&amp; edad &lt;= 30), &quot;22-30&quot;, &#10;     if((edad &gt; 30 &amp;&amp; edad &lt;= 45), &quot;31-45&quot;, &#10;        if (edad&gt; 45, &quot;&gt;45&quot;, &quot;NA&quot;))))"/>
-          <parameter key="ingresos" value="if(ingresos==&quot;NA&quot;, 0, ingresos)"/>
+          <parameter key="edad" value="if((edad&gt;=15 &amp;&amp; edad&lt;=21), &quot;15-21&quot;, &#10;  if ((edad &gt;21 &amp;&amp; edad &lt;= 30), &quot;22-30&quot;, &#10;     if((edad &gt; 30 &amp;&amp; edad &lt;= 45), &quot;31-45&quot;, &#10;        if (edad&gt; 45, &quot;&gt;45&quot;, &quot;NA&quot;))))"/>
+          <parameter key="ingresos" value="if((ingresos &lt;= 300), &quot;&lt;=300.00&quot;, &#10;  if ((ingresos &gt; 300 &amp;&amp; ingresos &lt;= 600), &quot;300.01-600.00&quot;, &#10;     if((ingresos &gt; 600.01 &amp;&amp; ingresos &lt;= 1000.00), &quot;600.01-1000.00&quot;, &#10;        if((ingresos &gt; 1000.01 &amp;&amp; ingresos &lt;= 1500.00), &quot;1000.01-1500.00&quot;,&#10;           if((ingresos &gt; 1500.01 &amp;&amp; ingresos &lt;= 2000.00), &quot;1500.01-2000.00&quot;,&#10;              if((ingresos &gt; 2000.01 &amp;&amp; ingresos &lt;= 3000.00), &quot;2000.01-3000.00&quot;,&#10;                 if (ingresos &gt; 3000, &quot;&gt; 3000&quot;, &quot;NA&quot;)))))))"/>
           <parameter key="ocupacion" value="if(ocupacion==&quot;NA&quot;, &quot;Ninguna&quot;, ocupacion)"/>
-          <parameter key="anios_trabajo" value="if(anios_trabajo==&quot;NA&quot;, 0, anios_trabajo)"/>
+          <parameter key="anios_trabajo" value="if((anios_trabajo &gt;=0 &amp;&amp; anios_trabajo &lt;= 5), &quot;&lt;=5&quot;, &#10;  if ((anios_trabajo &gt; 6 &amp;&amp; anios_trabajo &lt;= 10), &quot;6-10&quot;, &#10;     if((anios_trabajo &gt; 11 &amp;&amp; anios_trabajo &lt;= 20), &quot;11-20&quot;, &#10;        if((anios_trabajo &gt; 21 &amp;&amp; anios_trabajo &lt;= 30), &quot;21-30&quot;,&#10;           if((anios_trabajo &gt; 31 &amp;&amp; anios_trabajo &lt;= 40), &quot;31-40&quot;,&#10;              if((anios_trabajo &gt; 41 &amp;&amp; anios_trabajo &lt;= 50), &quot;41-50&quot;,&#10;                 if (anios_trabajo &gt; 50, &quot;&gt; 50&quot;, &quot;NA&quot;)))))))"/>
           <parameter key="numero_trabajos" value="if(numero_trabajos==&quot;NA&quot;, &quot;Ninguno&quot;, numero_trabajos)"/>
           <parameter key="titulo" value="if(titulo==&quot;NA&quot;, &quot;No tiene&quot;, titulo)"/>
           <parameter key="estado_civil" value="if(estado_civil==&quot;Separado(a)&quot;, &quot;Divorciado(a)&quot;, estado_civil)"/>
           <parameter key="seguro_social" value="if(contains(seguro_social, &quot;IESS&quot;), &quot;IESS&quot;,seguro_social)"/>
+          <parameter key="anio" value="2019"/>
+          <parameter key="area" value="if(area==&quot;Urbano&quot;, &quot;Urbana&quot;, area)"/>
+          <parameter key="etnia" value="if(contains(etnia, &quot;Otro&quot;), &quot;Otra&quot;, etnia)"/>
         </list>
         <parameter key="keep_all" value="true"/>
       </operator>
@@ -591,15 +599,15 @@
         <parameter key="invert_filter" value="true"/>
         <list key="filters_list">
           <parameter key="filters_entry_key" value="estado_civil.equals.NA"/>
-          <parameter key="filters_entry_key" value="clasificacion.contains.NA"/>
+          <parameter key="filters_entry_key" value="edad.contains.NA"/>
         </list>
         <parameter key="filters_logic_and" value="true"/>
         <parameter key="filters_check_metadata" value="true"/>
       </operator>
       <operator activated="true" class="read_csv" compatibility="9.10.001" expanded="true" height="68" name="2020" width="90" x="45" y="340">
         <parameter key="csv_file" value="D:\tfm\tfm_enemdu2020.csv"/>
-        <parameter key="column_separators" value=","/>
-        <parameter key="trim_lines" value="false"/>
+        <parameter key="column_separators" value=";"/>
+        <parameter key="trim_lines" value="true"/>
         <parameter key="use_quotes" value="true"/>
         <parameter key="quotes_character" value="&quot;"/>
         <parameter key="escape_character" value="\"/>
@@ -685,7 +693,7 @@
           <parameter key="63" value="p44i.true.polynominal.attribute"/>
           <parameter key="64" value="p44j.true.polynominal.attribute"/>
           <parameter key="65" value="p44k.true.polynominal.attribute"/>
-          <parameter key="66" value="p45.true.polynominal.attribute"/>
+          <parameter key="66" value="p45.true.integer.attribute"/>
           <parameter key="67" value="p46.true.polynominal.attribute"/>
           <parameter key="68" value="p47a.true.polynominal.attribute"/>
           <parameter key="69" value="p47b.true.polynominal.attribute"/>
@@ -740,7 +748,7 @@
           <parameter key="118" value="p76.true.polynominal.attribute"/>
           <parameter key="119" value="p77.true.polynominal.attribute"/>
           <parameter key="120" value="p78.true.polynominal.attribute"/>
-          <parameter key="121" value="ingrl.true.polynominal.attribute"/>
+          <parameter key="121" value="ingrl.true.integer.attribute"/>
           <parameter key="122" value="sd01.true.polynominal.attribute"/>
           <parameter key="123" value="sd021.true.polynominal.attribute"/>
           <parameter key="124" value="sd022.true.polynominal.attribute"/>
@@ -827,24 +835,28 @@
           <parameter key="p06" value="estado_civil"/>
           <parameter key="p10a" value="nivel_instruccion"/>
           <parameter key="p12b" value="titulo"/>
-          <parameter key="p15" value="comoSeConsidera"/>
+          <parameter key="p15" value="etnia"/>
           <parameter key="p42" value="ocupacion"/>
           <parameter key="p45" value="anios_trabajo"/>
           <parameter key="p50" value="numero_trabajos"/>
+          <parameter key="ciudad" value="codigo_postal"/>
         </list>
         <parameter key="from_attribute" value=""/>
         <parameter key="to_attribute" value=""/>
       </operator>
       <operator activated="true" class="generate_attributes" compatibility="9.10.001" expanded="true" height="82" name="Generate Attributes (3)" width="90" x="715" y="340">
         <list key="function_descriptions">
-          <parameter key="clasificacion" value="if((edad&gt;=15 &amp;&amp; edad&lt;=21), &quot;15-21&quot;, &#10;  if ((edad &gt;21 &amp;&amp; edad &lt;= 30), &quot;22-30&quot;, &#10;     if((edad &gt; 30 &amp;&amp; edad &lt;= 45), &quot;31-45&quot;, &#10;        if (edad&gt; 45, &quot;&gt;45&quot;, &quot;NA&quot;))))"/>
-          <parameter key="ingresos" value="if(ingresos==&quot;NA&quot;, 0, ingresos)"/>
+          <parameter key="edad" value="if((edad&gt;=15 &amp;&amp; edad&lt;=21), &quot;15-21&quot;, &#10;  if ((edad &gt;21 &amp;&amp; edad &lt;= 30), &quot;22-30&quot;, &#10;     if((edad &gt; 30 &amp;&amp; edad &lt;= 45), &quot;31-45&quot;, &#10;        if (edad&gt; 45, &quot;&gt;45&quot;, &quot;NA&quot;))))"/>
+          <parameter key="ingresos" value="if((ingresos &lt;= 300), &quot;&lt;=300.00&quot;, &#10;  if ((ingresos &gt; 300 &amp;&amp; ingresos &lt;= 600), &quot;300.01-600.00&quot;, &#10;     if((ingresos &gt; 600.01 &amp;&amp; ingresos &lt;= 1000.00), &quot;600.01-1000.00&quot;, &#10;        if((ingresos &gt; 1000.01 &amp;&amp; ingresos &lt;= 1500.00), &quot;1000.01-1500.00&quot;,&#10;           if((ingresos &gt; 1500.01 &amp;&amp; ingresos &lt;= 2000.00), &quot;1500.01-2000.00&quot;,&#10;              if((ingresos &gt; 2000.01 &amp;&amp; ingresos &lt;= 3000.00), &quot;2000.01-3000.00&quot;,&#10;                 if (ingresos &gt; 3000, &quot;&gt; 3000&quot;, &quot;NA&quot;)))))))"/>
           <parameter key="ocupacion" value="if(ocupacion==&quot;NA&quot;, &quot;Ninguna&quot;, ocupacion)"/>
-          <parameter key="anios_trabajo" value="if(anios_trabajo==&quot;NA&quot;, 0, anios_trabajo)"/>
+          <parameter key="anios_trabajo" value="if((anios_trabajo &gt;=0 &amp;&amp; anios_trabajo &lt;= 5), &quot;&lt;=5&quot;, &#10;  if ((anios_trabajo &gt; 6 &amp;&amp; anios_trabajo &lt;= 10), &quot;6-10&quot;, &#10;     if((anios_trabajo &gt; 11 &amp;&amp; anios_trabajo &lt;= 20), &quot;11-20&quot;, &#10;        if((anios_trabajo &gt; 21 &amp;&amp; anios_trabajo &lt;= 30), &quot;21-30&quot;,&#10;           if((anios_trabajo &gt; 31 &amp;&amp; anios_trabajo &lt;= 40), &quot;31-40&quot;,&#10;              if((anios_trabajo &gt; 41 &amp;&amp; anios_trabajo &lt;= 50), &quot;41-50&quot;,&#10;                 if (anios_trabajo &gt; 50, &quot;&gt; 50&quot;, &quot;NA&quot;)))))))"/>
           <parameter key="numero_trabajos" value="if(numero_trabajos==&quot;NA&quot;, &quot;Ninguno&quot;, numero_trabajos)"/>
           <parameter key="titulo" value="if(titulo==&quot;NA&quot;, &quot;No tiene&quot;, titulo)"/>
           <parameter key="estado_civil" value="if(estado_civil==&quot;Separado(a)&quot;, &quot;Divorciado(a)&quot;, estado_civil)"/>
           <parameter key="seguro_social" value="if(contains(seguro_social, &quot;IESS&quot;), &quot;IESS&quot;,seguro_social)"/>
+          <parameter key="anio" value="2020"/>
+          <parameter key="area" value="if(area==&quot;Urbano&quot;, &quot;Urbana&quot;, area)"/>
+          <parameter key="etnia" value="if(contains(etnia, &quot;Otro&quot;), &quot;Otra&quot;, etnia)"/>
         </list>
         <parameter key="keep_all" value="true"/>
       </operator>
@@ -854,7 +866,7 @@
         <parameter key="invert_filter" value="true"/>
         <list key="filters_list">
           <parameter key="filters_entry_key" value="estado_civil.equals.NA"/>
-          <parameter key="filters_entry_key" value="clasificacion.contains.NA"/>
+          <parameter key="filters_entry_key" value="edad.contains.NA"/>
         </list>
         <parameter key="filters_logic_and" value="true"/>
         <parameter key="filters_check_metadata" value="true"/>
@@ -869,7 +881,7 @@
         <parameter key="join_type" value="inner"/>
         <parameter key="use_id_attribute_as_key" value="false"/>
         <list key="key_attributes">
-          <parameter key="ciudad" value="igo Postal"/>
+          <parameter key="codigo_postal" value="igo Postal"/>
         </list>
         <parameter key="keep_both_join_attributes" value="false"/>
       </operator>
